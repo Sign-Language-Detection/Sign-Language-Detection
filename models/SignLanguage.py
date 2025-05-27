@@ -1,3 +1,8 @@
+class CameraOpenError(Exception):
+    """Raised when the webcam cannot be opened."""
+    pass
+
+
 import os
 import cv2
 import torch
@@ -59,8 +64,7 @@ class SignLanguageDetector:
         cls.load_model()
         cap = cv2.VideoCapture(camera_idx)
         if not cap.isOpened():
-            print("[ERROR] Cannot open camera")
-            return
+            raise CameraOpenError(f"Cannot open camera with index {camera_idx}")
 
         while True:
             ret, frame = cap.read()
