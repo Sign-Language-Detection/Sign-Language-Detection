@@ -1,7 +1,6 @@
 .vscode/
 # Virtual environment
 venv/
-env/
 .venv/
-.env/
 .idea/
+*.pyc
