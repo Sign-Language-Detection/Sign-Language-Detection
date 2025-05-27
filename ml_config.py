@@ -64,3 +64,17 @@ class MLModelLoader:
         # Cache and return
         self._instances[key] = instance
         return instance
+
+    def model_processor(self, key: str, method: str, *args, **kwargs):
+        """
+        Retrieve the model for 'key' and call its 'method' with any args/kwargs.
+        Example:
+          loader.model_processor("sign_detect", "predict_frame", frame)
+          loader.model_processor("sign_detect", "run_realtime")
+        """
+        model = self.get(key)
+        if not hasattr(model, method):
+            raise AttributeError(f"Model '{key}' has no method '{method}'.")
+        func = getattr(model, method)
+        return func(*args, **kwargs)
+
