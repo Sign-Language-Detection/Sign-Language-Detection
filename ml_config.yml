@@ -1,0 +1,5 @@
+models:
+  sign_detect:
+    module: models.SignLanguage
+    class: SignLanguageDetector
+    model_path: weights/sldt.pt
