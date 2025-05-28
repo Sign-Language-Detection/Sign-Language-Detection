@@ -59,7 +59,7 @@ class SignLanguageDetector:
         return label, best_conf
 
     @classmethod
-    def run_realtime(cls, camera_idx: int = 0):
+    def run_realtime(cls, camera_idx: int = 1):
         """Open webcam, overlay top-1 sign+conf, quit on 'q'."""
         cls.load_model()
         cap = cv2.VideoCapture(camera_idx)
